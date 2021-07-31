@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    redis:
+        image: redis:latest
+        environment:
+            - ALLOW_EMPTY_PASSWORD=yes
+        ports:
+            - 6379:6379
+      
+    mysql:
+        image: mysql:8.0
+        volumes:
+            - ./docker/db/mysql:/var/lib/mysql
+        restart: always
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+      
+networks:
+  elk:
+    driver: bridge

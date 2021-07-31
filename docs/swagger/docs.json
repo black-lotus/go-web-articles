@@ -1,0 +1,120 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "A Demo of Web Article Service",
+    "title": "Web Articles",
+    "contact": {
+      "email": "donnydiunindra@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/application/health": {
+      "get": {
+        "description": "Health API Handler",
+        "tags": [
+          "Health Check"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/responseHealthCheck"
+            }
+          },
+          "400": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/webarticles/article": {
+      "post": {
+        "description": "Create New Article",
+        "tags": [
+          "Article"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/article-create"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        }
+      }
+    },
+    "request-article-create": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "body": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "integer"
+        }
+      }
+    },
+    "responseHealthCheck": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "article-create": {
+      "name": "body",
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/request-article-create"
+      }
+    }
+  },
+  "tags": [
+    {
+      "description": "Article Rest API",
+      "name": "Article"
+    }
+  ],
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

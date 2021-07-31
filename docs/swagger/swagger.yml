@@ -1,0 +1,81 @@
+swagger: "2.0"
+info:
+  description: "A Demo of Web Article Service"
+  version: "1.0.0"
+  title: "Web Articles"
+  contact:
+    email: "donnydiunindra@gmail.com"
+
+consumes:
+- application/json
+produces:
+- application/json
+schemes:
+- "http"
+- "https"
+
+tags:
+- name: "Article"
+  description: "Article Rest API"
+
+paths:
+  /application/health:
+    get:
+      tags:
+      - "Health Check"
+      description: "Health API Handler"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/responseHealthCheck"
+        400:
+          description: "generic error response"
+          schema:
+            $ref: "#/definitions/error"
+  
+  /webarticles/article:
+    post:
+      tags: 
+        - "Article"
+      description: "Create New Article"
+      parameters:
+        - $ref: "#/parameters/article-create"
+      responses:
+        200:
+          description: OK
+  
+parameters:
+  article-create:
+    name: body
+    in: body
+    schema:
+      $ref: "#/definitions/request-article-create"
+
+definitions:
+  request-article-create:
+    type: "object"
+    properties:
+      author:
+        type: "string"
+      title:
+        type: "integer"
+      body:
+        type: "integer"
+  error:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+      timestamp:
+        type: "string"
+  responseHealthCheck:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+      timestamp:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
