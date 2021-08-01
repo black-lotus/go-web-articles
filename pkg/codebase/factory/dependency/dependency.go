@@ -8,6 +8,7 @@ import (
 type Dependency interface {
 	GetSQLDatabase() interfaces.SQLDatabase
 	GetRedisPool() interfaces.RedisPool
+	GetValidator() interfaces.Validator
 }
 
 // Option func type
@@ -16,6 +17,7 @@ type Option func(*deps)
 type deps struct {
 	sqlDB     interfaces.SQLDatabase
 	redisPool interfaces.RedisPool
+	validator interfaces.Validator
 }
 
 // SetSQLDatabase option func
@@ -29,6 +31,13 @@ func SetSQLDatabase(db interfaces.SQLDatabase) Option {
 func SetRedisPool(db interfaces.RedisPool) Option {
 	return func(d *deps) {
 		d.redisPool = db
+	}
+}
+
+// SetValidator option func
+func SetValidator(validator interfaces.Validator) Option {
+	return func(d *deps) {
+		d.validator = validator
 	}
 }
 
@@ -49,4 +58,8 @@ func (d *deps) GetSQLDatabase() interfaces.SQLDatabase {
 
 func (d *deps) GetRedisPool() interfaces.RedisPool {
 	return d.redisPool
+}
+
+func (d *deps) GetValidator() interfaces.Validator {
+	return d.validator
 }

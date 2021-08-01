@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "JSON Schema for create article",
+    "type": "object",
+    "properties": {
+      "author": {
+        "type": "string",
+        "minLength": 3
+      },
+      "title": {
+        "type": "string",
+        "minLength": 3
+      },
+      "body": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "required": [
+      "author",
+      "title",
+      "body"
+    ],
+    "additionalProperties": true
+}

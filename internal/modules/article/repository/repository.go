@@ -9,13 +9,13 @@ import (
 // Repository parent
 type Repository struct {
 	db          *sql.DB
-	articleRepo interfaces.ArticleRepository
+	ArticleRepo interfaces.ArticleRepository
 }
 
 // NewRepository create new repository
 func NewRepository(db *sql.DB) *Repository {
 	return &Repository{
 		db:          db,
-		articleRepo: mysql.NewArticleRepo(db),
+		ArticleRepo: mysql.NewArticleRepo(db),
 	}
 }

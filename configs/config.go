@@ -7,6 +7,7 @@ import (
 	"webarticles/pkg/codebase/interfaces"
 	"webarticles/pkg/config"
 	"webarticles/pkg/config/database"
+	"webarticles/pkg/validator"
 
 	// mysql driver
 	_ "github.com/go-sql-driver/mysql"
@@ -25,6 +26,7 @@ func LoadConfigs(baseCfg *config.Config) (deps dependency.Dependency) {
 
 		// inject all service dependencies
 		deps = dependency.InitDependency(
+			dependency.SetValidator(validator.NewValidator()),
 			dependency.SetSQLDatabase(mysqlDeps),
 			dependency.SetRedisPool(redisDeps),
 			// ... add more dependencies

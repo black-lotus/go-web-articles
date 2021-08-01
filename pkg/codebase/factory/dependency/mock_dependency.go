@@ -44,3 +44,19 @@ func (_m *MockDependency) GetSQLDatabase() interfaces.SQLDatabase {
 
 	return r0
 }
+
+// GetValidator provides a mock function with given fields:
+func (_m *MockDependency) GetValidator() interfaces.Validator {
+	ret := _m.Called()
+
+	var r0 interfaces.Validator
+	if rf, ok := ret.Get(0).(func() interfaces.Validator); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(interfaces.Validator)
+		}
+	}
+
+	return r0
+}

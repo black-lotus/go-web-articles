@@ -26,6 +26,7 @@ func NewModule(deps dependency.Dependency) *Module {
 
 	var mod Module
 	mod.restHandler = resthandler.NewRestHandler(
+		deps.GetValidator(),
 		uc,
 	)
 
