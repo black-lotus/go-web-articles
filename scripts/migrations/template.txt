@@ -1,0 +1,22 @@
+package migrations
+
+import (
+	"database/sql"
+	"webarticles/scripts/migrations/db"
+)
+
+func init() {
+	migrator.AddMigration(&Migration{
+		Version: {{.Version}},
+		Up:      mig_{{.Version}}_{{.Name}}_up,
+		Down:    mig_{{.Version}}_{{.Name}}_down,
+	})
+}
+
+func mig_{{.Version}}_{{.Name}}_up(p *db.Persistence) error {
+	return nil
+}
+
+func mig_{{.Version}}_{{.Name}}_down(p *db.Persistence) error {
+	return nil
+}

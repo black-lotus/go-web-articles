@@ -34,7 +34,7 @@ paths:
           schema:
             $ref: "#/definitions/error"
   
-  /webarticles/article:
+  /webarticles/articles:
     post:
       tags: 
         - "Article"
@@ -58,7 +58,7 @@ paths:
       responses:
         200:
           description: OK
-  /webarticles/article/{id}:
+  /webarticles/articles/{id}:
     get: 
       tags:
         - "Article"
@@ -87,9 +87,9 @@ definitions:
       author:
         type: "string"
       title:
-        type: "integer"
+        type: "string"
       body:
-        type: "integer"
+        type: "string"
   error:
     type: "object"
     properties:

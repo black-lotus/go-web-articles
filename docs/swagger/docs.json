@@ -41,7 +41,7 @@
         }
       }
     },
-    "/webarticles/article": {
+    "/webarticles/articles": {
       "get": {
         "description": "Find All Articles",
         "tags": [
@@ -82,7 +82,7 @@
         }
       }
     },
-    "/webarticles/article/{id}": {
+    "/webarticles/articles/{id}": {
       "get": {
         "description": "Get article by id",
         "tags": [
@@ -120,10 +120,10 @@
           "type": "string"
         },
         "body": {
-          "type": "integer"
+          "type": "string"
         },
         "title": {
-          "type": "integer"
+          "type": "string"
         }
       }
     },

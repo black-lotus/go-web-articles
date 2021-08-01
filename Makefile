@@ -31,3 +31,20 @@ swagger:
 # make mock
 mock:
 	@mockery --all --recursive=true --inpackage --case snake
+
+# database migration
+migrate-create:
+	@if [ ! -d "cmd/migration" ]; then  echo "ERROR: migration undefined"; exit 1; fi
+	@go run ./cmd/migration migrate create -n $(NAME)
+
+migrate-status:
+	@if [ ! -d "cmd/migration" ]; then  echo "ERROR: migration undefined"; exit 1; fi
+	@go run ./cmd/migration migrate status
+
+migrate-up:
+	@if [ ! -d "cmd/migration" ]; then  echo "ERROR: migration undefined"; exit 1; fi
+	@go run ./cmd/migration migrate up -v $(VERSION)
+
+migrate-down:
+	@if [ ! -d "cmd/migration" ]; then  echo "ERROR: migration undefined"; exit 1; fi
+	@go run ./cmd/migration migrate down -v $(VERSION)
