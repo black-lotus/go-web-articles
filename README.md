@@ -61,6 +61,12 @@ or can be manually using `go run`
 $ go run ./cmd/webarticles
 ```
 
+#### Access the swagger 
+```http://host:port/docs/swagger```
+for instance
+```http://localhost:8000/docs/swagger```
+
+
 
 ### Clear service
 ```
